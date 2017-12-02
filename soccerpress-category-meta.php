@@ -3,7 +3,7 @@
 Plugin Name: Category Meta
 Description: Add Meta Data For Taxonomy
 Author: manzur
-Author URI: https://codepassenger.com/
+Author URI: https://profiles.wordpress.org/manzurahammed
 Text Domain: cm
 Domain Path: /languages/
 Version: 1.0
