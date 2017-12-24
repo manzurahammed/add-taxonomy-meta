@@ -26,7 +26,7 @@ class Category_meta {
 	}
 	
 	public function loadd_script(){
-		wp_enqueue_script( 'cm-admin-script',plugins_url('/js/cm-admin-script.js',__FILE__),array('jquery'),false,false);
+		wp_enqueue_script( 'cm-admin-script',plugins_url('/js/cm-script.js',__FILE__),array('jquery'),false,false);
 	}
 	/**
 	 * [taxonomy_add_new_meta_field description]
