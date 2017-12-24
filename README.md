@@ -13,9 +13,9 @@
 Add Taxonomy Meta is a developer's toolkit for building taxonomy-meta, taxonomy data, for WordPress that will blow your mind. Easily manage meta for  terms.
 
 ## Custom Field Types
-Text
-Image
-Select
+1.  ```Text```
+2.  ```Select```
+3.  ```Image```
 
 ## Example
 ```php
