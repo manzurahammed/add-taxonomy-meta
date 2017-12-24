@@ -18,7 +18,7 @@ Image
 Select
 
 ## Example
-
+```php
 function add_data($data){
 	$data['add_data'] =  array(
 		'cat_name' =>'category',
@@ -45,3 +45,4 @@ function add_data($data){
 	return $data;
 }
 add_filter('add_category_meta','add_data');
+```
