@@ -8,11 +8,11 @@ Text Domain: cm
 Domain Path: /languages/
 Version: 1.0
 */
-
-class Cm {
+class Category_meta {
 	public $category_name;
 	public $args;
 	public $fields;
+
 	public function __construct($args){
 		$this->category_name = $args['cat_name'];
 		$this->args = $args;
@@ -21,13 +21,18 @@ class Cm {
 		add_action( 'create_'.$this->category_name, array($this,'save_taxonomy_custom_meta'), 10, 2 );
 		add_action( $this->category_name.'_edit_form_fields', array($this,'taxonomy_add_new_meta_field'));
 		add_action( $this->category_name.'_add_form_fields', array($this,'taxonomy_add_new_meta_field'));
+		add_action( $this->category_name.'_delete_category ', array($this,'lol'));
 		add_action( 'admin_enqueue_scripts', array($this, 'loadd_script') );
 	}
 	
 	public function loadd_script(){
 		wp_enqueue_script( 'cm-admin-script',plugins_url('/js/cm-admin-script.js',__FILE__),array('jquery'),false,false);
 	}
-	
+	/**
+	 * [taxonomy_add_new_meta_field description]
+	 * @param  [object] $term 
+	 * @return [html]  [Add New Field For Taxonomy]
+	 */
 	public function taxonomy_add_new_meta_field($term){
 		$fieldD = '';
 		$term_meta = array();
@@ -81,7 +86,14 @@ class Cm {
 		}
 		echo $fieldD;
 	}
-	
+	/**
+	 * [droupdown description]
+	 * @param  [int]  $id       
+	 * @param  [array]  $field    
+	 * @param  [vercher]  $select   
+	 * @param  boolean $multiple 
+	 * @return [html]            [Generate Dropdown option for given array]
+	 */
 	public function droupdown($id,$field,$select,$multiple=false){
 		$fieldD = '';
 		$select = (array)$select;
@@ -99,7 +111,14 @@ class Cm {
 		$fieldD .= '</select>';
 		return $fieldD;
 	}
-	
+	/**
+	 * [image description]
+	 * @param  [init]  $id         
+	 * @param  [array]  $field_name 
+	 * @param  [verchar]  $value      
+	 * @param  boolean $multiple   
+	 * @return [type]
+	 */
 	public function image($id,$field_name,$value,$multiple=false){
 		$markup = $image_thumb = '';
 		$image_thumb = plugins_url('../images/placeholder.png',__FILE__);
@@ -112,7 +131,11 @@ class Cm {
 		$markup .= '<input id="' . $id . '" class="image_data_field" type="hidden" name="' . $field_name . '" value="' . $value . '"/><br/>' . "\n";
 		return $markup;
 	}
-	
+	/**
+	 * [save_taxonomy_custom_meta description]
+	 * @param  [int] $term_id 
+	 * @return [type]          [Save Meta Data]
+	 */
 	function save_taxonomy_custom_meta( $term_id ) {
 		if ( isset( $_POST[$this->category_name]) ) {
 			$t_id = $term_id;
@@ -128,8 +151,12 @@ class Cm {
 			update_option( $meta, $term_meta );
 		}
 	}
+	/**
+	 * [create_filter description]
+	 * @return [type] [Create New object]
+	 */
 	public static function create_filter(){
-		$data = apply_filters('cm_add_meta',array());
+		$data = apply_filters('add_category_meta',array());
 		if(!empty($data) && is_array($data)){
 			foreach($data as $item){
 				new self($item);
@@ -137,4 +164,4 @@ class Cm {
 		}
 	}
 }
-add_action('init','Cm::create_filter');
+add_action('init','Category_meta::create_filter');
