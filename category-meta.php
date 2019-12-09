@@ -6,7 +6,7 @@ Author: manzur
 Author URI: https://profiles.wordpress.org/manzurahammed
 Text Domain: cm
 Domain Path: /languages/
-Version: 1.0
+Version: 1.1
 */
 class Category_meta {
 	public $category_name;
