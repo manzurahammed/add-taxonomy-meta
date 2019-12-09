@@ -2,7 +2,7 @@
 
 **Contributors:**      [manzurahammed](https://github.com/manzurahammed)
 **Tags:**              fields, taxonomy-meta, settings  
-**Requires at least:** 3.8.0  
+**Requires at least:** 3.9.0  
 **Tested up to:**      5.3  
 **Stable tag:**        1.0.2 
 **License:**           GPLv2 or later  
