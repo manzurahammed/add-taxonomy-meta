@@ -12,7 +12,7 @@ class Category_meta {
 	public $category_name;
 	public $args;
 	public $fields;
-
+    public $testdata;
 	public function __construct($args){
 		$this->category_name = $args['cat_name'];
 		$this->args = $args;
